@@ -1,4 +1,4 @@
-module github.com/mattn/dboxpaper
+module github.com/Koswu/dboxpaper
 
 go 1.23
 

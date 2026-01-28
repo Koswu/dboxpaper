@@ -1,9 +1,9 @@
 # dboxpaper
 
-[![Test Status](https://github.com/mattn/dboxpaper/workflows/test/badge.svg?branch=master)](https://github.com/mattn/dboxpaper/actions?workflow=test)
-[![Go Report Card](https://goreportcard.com/badge/github.com/mattn/dboxpaper)](https://goreportcard.com/report/github.com/mattn/dboxpaper)
+[![Test Status](https://github.com/Koswu/dboxpaper/workflows/test/badge.svg?branch=master)](https://github.com/Koswu/dboxpaper/actions?workflow=test)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Koswu/dboxpaper)](https://goreportcard.com/report/github.com/Koswu/dboxpaper)
 
-![dboxpaper](https://raw.githubusercontent.com/mattn/dboxpaper/master/dboxpaper-logo256.png)
+![dboxpaper](https://raw.githubusercontent.com/Koswu/dboxpaper/master/dboxpaper-logo256.png)
 
 client for Dropbox Paper
 
@@ -67,7 +67,7 @@ $ dboxpaper delete XXXXXXXXXXX
 ## Installation
 
 ```
-$ go install github.com/mattn/dboxpaper@latest
+$ go install github.com/Koswu/dboxpaper@latest
 ```
 
 ## Configuration
