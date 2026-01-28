@@ -8,7 +8,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-func TestEnvVarClientID(t *testing.T) {
+func TestEnvVarCredentials(t *testing.T) {
 	// Save original env vars
 	origClientID := os.Getenv("DROPBOX_CLIENT_ID")
 	origClientSecret := os.Getenv("DROPBOX_CLIENT_SECRET")
@@ -33,12 +33,10 @@ func TestEnvVarClientID(t *testing.T) {
 
 	// Create temporary directory for settings
 	tmpDir := filepath.Join(os.TempDir(), "dboxpaper_test")
-	os.MkdirAll(tmpDir, 0700)
+	if err := os.MkdirAll(tmpDir, 0700); err != nil {
+		t.Fatalf("Failed to create temp directory: %v", err)
+	}
 	defer os.RemoveAll(tmpDir)
-
-	// Create a dummy settings file to prevent OAuth flow
-	settingsFile := filepath.Join(tmpDir, "settings.json")
-	os.WriteFile(settingsFile, []byte(`{"access_token":"dummy","token_type":"Bearer"}`), 0600)
 
 	// Override HOME to use temp directory
 	origHome := os.Getenv("HOME")
@@ -60,8 +58,12 @@ func TestEnvVarClientID(t *testing.T) {
 	
 	// Create settings directory structure
 	configDir := filepath.Join(tmpDir, ".config", "dboxpaper")
-	os.MkdirAll(configDir, 0700)
-	os.WriteFile(filepath.Join(configDir, "settings.json"), []byte(`{"access_token":"dummy","token_type":"Bearer"}`), 0600)
+	if err := os.MkdirAll(configDir, 0700); err != nil {
+		t.Fatalf("Failed to create config directory: %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(configDir, "settings.json"), []byte(`{"access_token":"dummy","token_type":"Bearer"}`), 0600); err != nil {
+		t.Fatalf("Failed to write settings file: %v", err)
+	}
 	
 	err := initialize(ctx)
 	if err != nil {
@@ -105,7 +107,9 @@ func TestDefaultClientID(t *testing.T) {
 
 	// Create temporary directory for settings
 	tmpDir := filepath.Join(os.TempDir(), "dboxpaper_test_default")
-	os.MkdirAll(tmpDir, 0700)
+	if err := os.MkdirAll(tmpDir, 0700); err != nil {
+		t.Fatalf("Failed to create temp directory: %v", err)
+	}
 	defer os.RemoveAll(tmpDir)
 
 	// Override HOME to use temp directory
@@ -128,8 +132,12 @@ func TestDefaultClientID(t *testing.T) {
 	
 	// Create settings directory structure
 	configDir := filepath.Join(tmpDir, ".config", "dboxpaper")
-	os.MkdirAll(configDir, 0700)
-	os.WriteFile(filepath.Join(configDir, "settings.json"), []byte(`{"access_token":"dummy","token_type":"Bearer"}`), 0600)
+	if err := os.MkdirAll(configDir, 0700); err != nil {
+		t.Fatalf("Failed to create config directory: %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(configDir, "settings.json"), []byte(`{"access_token":"dummy","token_type":"Bearer"}`), 0600); err != nil {
+		t.Fatalf("Failed to write settings file: %v", err)
+	}
 	
 	err := initialize(ctx)
 	if err != nil {
