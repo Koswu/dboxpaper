@@ -70,6 +70,25 @@ $ dboxpaper delete XXXXXXXXXXX
 $ go install github.com/mattn/dboxpaper@latest
 ```
 
+## Configuration
+
+### Custom Dropbox App Credentials
+
+By default, dboxpaper uses built-in Dropbox API credentials. If you want to use your own Dropbox App credentials, you can set the following environment variables:
+
+- `DROPBOX_CLIENT_ID`: Your Dropbox App's Client ID
+- `DROPBOX_CLIENT_SECRET`: Your Dropbox App's Client Secret
+
+Example:
+
+```bash
+export DROPBOX_CLIENT_ID="your_client_id"
+export DROPBOX_CLIENT_SECRET="your_client_secret"
+dboxpaper list
+```
+
+If these environment variables are not set, dboxpaper will use the default built-in credentials.
+
 ## License
 
 MIT

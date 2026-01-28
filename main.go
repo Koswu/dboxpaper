@@ -233,6 +233,16 @@ func (dboxpaper *DboxPaper) AccessToken() error {
 }
 
 func initialize(c *cli.Context) error {
+	// Get ClientID and ClientSecret from environment variables or use defaults
+	clientID := os.Getenv("DROPBOX_CLIENT_ID")
+	if clientID == "" {
+		clientID = "nrb8y95k7yoeor6"
+	}
+	clientSecret := os.Getenv("DROPBOX_CLIENT_SECRET")
+	if clientSecret == "" {
+		clientSecret = "fhme6tzwkzw5og8"
+	}
+
 	dboxpaper := &DboxPaper{
 		config: &oauth2.Config{
 			Scopes: []string{},
@@ -240,8 +250,8 @@ func initialize(c *cli.Context) error {
 				AuthURL:  "https://www.dropbox.com/oauth2/authorize",
 				TokenURL: "https://api.dropboxapi.com/oauth2/token",
 			},
-			ClientID:     "nrb8y95k7yoeor6",
-			ClientSecret: "fhme6tzwkzw5og8",
+			ClientID:     clientID,
+			ClientSecret: clientSecret,
 			RedirectURL:  "http://localhost:8989",
 		},
 	}
