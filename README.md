@@ -70,6 +70,25 @@ $ dboxpaper delete XXXXXXXXXXX
 $ go install github.com/mattn/dboxpaper@latest
 ```
 
+## Configuration
+
+### Dropbox App Credentials
+
+dboxpaper requires you to set the following environment variables with your Dropbox App credentials:
+
+- `DROPBOX_CLIENT_ID`: Your Dropbox App's Client ID (required)
+- `DROPBOX_CLIENT_SECRET`: Your Dropbox App's Client Secret (required)
+
+Example:
+
+```bash
+export DROPBOX_CLIENT_ID="your_client_id"
+export DROPBOX_CLIENT_SECRET="your_client_secret"
+dboxpaper list
+```
+
+To create a Dropbox App and obtain these credentials, visit the [Dropbox App Console](https://www.dropbox.com/developers/apps).
+
 ## License
 
 MIT
