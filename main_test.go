@@ -115,6 +115,12 @@ func TestMissingEnvVars(t *testing.T) {
 			expectedError: "DROPBOX_CLIENT_ID environment variable is required",
 		},
 		{
+			name:          "Missing client ID",
+			setClientID:   false,
+			setSecret:     true,
+			expectedError: "DROPBOX_CLIENT_ID environment variable is required",
+		},
+		{
 			name:          "Missing client secret",
 			setClientID:   true,
 			setSecret:     false,
