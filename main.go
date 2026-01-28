@@ -233,14 +233,14 @@ func (dboxpaper *DboxPaper) AccessToken() error {
 }
 
 func initialize(c *cli.Context) error {
-	// Get ClientID and ClientSecret from environment variables or use defaults
+	// Get ClientID and ClientSecret from environment variables
 	clientID := os.Getenv("DROPBOX_CLIENT_ID")
 	if clientID == "" {
-		clientID = "nrb8y95k7yoeor6"
+		return fmt.Errorf("DROPBOX_CLIENT_ID environment variable is required")
 	}
 	clientSecret := os.Getenv("DROPBOX_CLIENT_SECRET")
 	if clientSecret == "" {
-		clientSecret = "fhme6tzwkzw5og8"
+		return fmt.Errorf("DROPBOX_CLIENT_SECRET environment variable is required")
 	}
 
 	dboxpaper := &DboxPaper{
